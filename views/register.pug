@@ -24,21 +24,28 @@ html
 			}
 	body
 		include nav
-		h1 Register Here!
-		form(method ="POST" action="registerF")
 
-			input(type= "text" id="email" name="regemail" placeholder="email")
+		if !user
+			h1 Register Here!
+			form(method ="POST" action="registerF")
 
-			br
+				input(type= "text" id="email" name="regemail" placeholder="email")
 
-			input(type= "text" id="nameform" name="regname" placeholder="Name")
+				br
 
-			br
+				input(type= "text" id="nameform" name="regname" placeholder="Name")
 
-			input(type= "password" id="titleform" name="regpassword" placeholder="Password")
+				br
 
-			br
+				input(type= "password" id="titleform" name="regpassword" placeholder="Password")
+
+				br
 
 
-			button(id="click" type="submit" value="submit") Submit
+				button(id="click" type="submit" value="submit") Submit
 
+		if user
+
+			H1 User Created!
+			.link 
+				a(href="/read" class="link") Click here to continue to messages.

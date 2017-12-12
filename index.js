@@ -37,7 +37,8 @@ app.post("/registerF", (req,results) => {
 			}
 	client.query(query)
 	.then ((res)=> {
-		results.render("index")
+		req.session.user = req.body.regname 
+		results.render("register", {user:req.session.user})
 	})
 
 
@@ -101,7 +102,7 @@ app.get("/login", (req,res) => {
 })
 
 app.get("/register", (req,res) => {
-	res.render("register")
+	res.render("register",{user:req.session.user})
 })
 
 app.get("/logout", (req,res)=> {
