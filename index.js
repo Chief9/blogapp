@@ -24,7 +24,7 @@ const client = new Client({
 	host: process.env.host,
 	database: process.env.database,
 	password: process.env.POSTGRES_PASSWORD,
-	port: 5432,
+	port: process.env.databaseport,
 
 })
 
@@ -112,6 +112,6 @@ app.get("/logout", (req,res)=> {
 
 
 
-app.listen(3000, function(){
+app.listen(process.env.webport, function(){
 	console.log("3k bby")
 })
