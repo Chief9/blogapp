@@ -1,0 +1,51 @@
+html
+	head
+		style.
+			body{
+			margin:0;
+			padding:0;
+			}
+
+			h1{
+			text-align:center;
+			}
+
+			form{
+			text-align:center;
+
+			}
+
+			input{
+			margin:1%;
+			}
+
+			.link{
+			text-align:center;
+			}
+	body
+		include nav
+		if !user
+			h1 Login Here
+			form(method ="POST" action="login")
+
+				input(type= "text" id="nameform" name="logname" placeholder="Enter your username")
+
+				br
+
+				input(type= "password" id="titleform" name="logpassword" placeholder="Password")
+
+				br
+
+				button(id="click" type="submit" value="submit") Submit
+
+				br
+			.link 
+				a(href="/register" class="link") Not registerd yet? click here!
+			H1 #{name}
+				 
+		if user
+			H1 #{name}
+			.link 
+				a(href="/read" class="link") Click here to continue to messages.
+
+

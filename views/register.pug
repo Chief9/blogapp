@@ -1,0 +1,44 @@
+html
+	head
+		style.
+			body{
+			margin:0;
+			padding:0;
+			}
+
+			h1{
+			text-align:center;
+			}
+
+			form{
+			text-align:center;
+
+			}
+
+			input{
+			margin:1%;
+			}
+
+			.link{
+			text-align:center;
+			}
+	body
+		include nav
+		h1 Register Here!
+		form(method ="POST" action="registerF")
+
+			input(type= "text" id="email" name="regemail" placeholder="email")
+
+			br
+
+			input(type= "text" id="nameform" name="regname" placeholder="Name")
+
+			br
+
+			input(type= "password" id="titleform" name="regpassword" placeholder="Password")
+
+			br
+
+
+			button(id="click" type="submit" value="submit") Submit
+

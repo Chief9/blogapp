@@ -1,0 +1,103 @@
+html
+	head
+		style.
+			body{
+			margin:0;
+			padding:0;
+			}
+
+			h1{
+			text-align:center;
+			}
+
+			.container{
+			margin: auto;
+			}
+
+			li.body {
+			list-style-type:none;
+			text-align: center;
+			border-style: double;
+			margin-bottom: 1%;
+			}
+
+			form {
+			text-align: center;
+			margin: 1%;
+			padding: 1%;
+			}
+
+			h1{
+			text-align: center;
+			margin: 1%
+			}
+
+			input{
+			text-align: center;
+			border-style: solid;
+			margin: 1%;
+			}
+
+			ul.lijst{
+			width: 50%;
+			margin: auto;
+			padding:0%;
+			}
+
+			h5{
+			margin: 1%;
+			text-align:right;
+			}
+
+			.link{
+			text-align:center;
+			}
+
+			#messageform{
+			height:100px;
+			}
+
+			li.body h6{
+			display: inline;
+			left: 40%;
+			position: relative;
+
+			}
+	body
+		include nav
+
+		if !user 
+			h1 Read all messages here!
+				.link 
+					a(href="/login" class="link") Click here to login and write messages.
+
+
+		if user
+			h1 Enter Messages below!
+				.link 
+					form(method ="POST" action="write")
+
+						input(type= "text" id="titleform" name="title" placeholder="title")
+
+						br
+
+						input(type= "text" id="messageform" name="message" placeholder="your message")
+
+						br
+
+						button(id="click" type="submit" value="submit") Submit
+
+						br
+			br
+
+			p #{succes}
+
+			br
+
+		div(id="container")
+			-for(var i = 0; i < lijst.length; i++)
+				ul.lijst
+					li.body 
+						h3 #{lijst[i].title}
+						p #{lijst[i].body}
+						h6 By: #{lijst[i].username}	

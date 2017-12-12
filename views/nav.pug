@@ -1,0 +1,53 @@
+nav
+	ul
+		li
+			a(href="/") Home
+		li
+			a(href="/read") Read
+		if !user	
+			li
+				a(href="/login") Login
+		if user
+			li
+				a(href="/logout") Logout	
+		p 	B.log
+
+  
+
+
+
+
+style.
+	nav	ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	}
+
+	nav	p	{
+	float: right;
+	color: white;
+	padding-right: 2%;
+	} 
+
+	nav	li {
+	float: left;
+	}
+
+	nav	li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	}
+
+	nav	a:hover:not(.active) {
+	background-color: #111;
+	}
+
+	nav	.active {
+	background-color:#4CAF50;
+	}
