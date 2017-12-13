@@ -30,88 +30,21 @@ const client = new Client({
 
 client.connect()
 
-app.post("/registerF", (req,results) => {
+require("./pages/registerF")(app, client)
 
-	const query = {
-		text: `insert into users (username, password, email) values ('${req.body.regname}','${req.body.regpassword}','${req.body.regemail}');`
-			}
-	client.query(query)
-	.then ((res)=> {
-		req.session.user = req.body.regname 
-		results.render("register", {user:req.session.user})
-	})
+require("./pages/login")(app, client)
 
+require("./pages/write")(app, client)
 
-})
+require("./pages/home")(app)
 
+require("./pages/read")(app, client)
 
-app.post("/login", (req,results) =>{
+require("./pages/loginF")(app)
 
-	const query ={
-		text : `Select *  from users where username = '${req.body.logname}' and password = '${req.body.logpassword}';`
-	}
-	client.query(query)
-	.then((res)=> {
-	if(res.rows.length !== 0){
-		var name = "login succesful";
-		req.session.user = req.body.logname
-			
-	} else {
-		var name = "login unsuccesful"
-	} 
-	results.render("login", {name:name, user:req.session.user})
+require("./pages/register")(app)
 
-	})
-	
-
-
-})
-
-app.post("/write", (req, results) => {
-   const query = {
-       text: `insert into messages (title,body, user_id) SELECT '${req.body.title}','${req.body.message}', users.id FROM users WHERE users.username = '${req.session.user}';`
-   }
-
-	client.query(query)
-	.then ((res) => {
-		results.redirect("read")
-})
-
-})
-
-
-
-app.get("/", (req,res) => {
-	res.render("index", {user:req.session.user, name:"Welcome"})
-})
-
-app.get("/read", (req,results) => {
-	  const query = {
-		text: "select messages.title, messages.body, users.username from messages INNER JOIN users on messages.user_id = users.id;"
-	}
-	client.query(query)
-	.then ((res) => {
-		var lijst = res.rows
-		results.render("read", {lijst:lijst, user:req.session.user})
-		})
-})
-
-
-app.get("/login", (req,res) => {
-	res.render("login", {user:req.session.user})
-})
-
-app.get("/register", (req,res) => {
-	res.render("register",{user:req.session.user})
-})
-
-app.get("/logout", (req,res)=> {
-	req.session.destroy()
-
-		res.render("index", {name:"Succesfully logged out"} )
-})
-
-
+require("./pages/logout")(app)
 
 app.listen(process.env.webport, function(){
 	console.log("3k bby")
