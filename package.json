@@ -1,7 +1,7 @@
 {
   "name": "blogapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "-index pagina welkom\r -all messages pagina \r (met comments, kan ook zoeken op user, voor comments plaatsen of berichten verwezen naar login)\r -via navbar naar login > users should be able to sign in > hello {username} > op voorpagina \r kan bij all messages nieuwe comments plaatsen, kan messages posten op allmessages\r -logout> destroy session\r -modules exporten ( module.exports (app))",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +9,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "pg": "^7.4.0",
     "pug": "^2.0.0-rc.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chief9/blogapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Chief9/blogapp/issues"
+  },
+  "homepage": "https://github.com/Chief9/blogapp#readme"
 }

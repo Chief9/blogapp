@@ -1,12 +1,18 @@
-module.exports = (app, client)=>{
+module.exports = (app,  client, bcrypt)=>{
 	app.post("/login", (req,results) =>{
 
+			
+	
+
+
 	const query ={
-		text : `Select *  from users where username = '${req.body.logname}' and password = '${req.body.logpassword}';`
+		text : `Select password from users where username = '${req.body.logname}';`
 	}
 	client.query(query)
 	.then((res)=> {
-	if(res.rows.length !== 0){
+		var hash = res.rows[0].password
+		var password = req.body.logpassword
+	if(bcrypt.compareSync(password, hash) == true ){
 		var name = "login succesful";
 		req.session.user = req.body.logname
 			

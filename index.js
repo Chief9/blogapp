@@ -4,6 +4,9 @@ const pg = require("pg")
 const Client = pg.Client
 const bodyParser = require("body-parser")
 const session = require("express-session")
+const bcrypt = require("bcrypt")
+
+
 
 require('dotenv').load();
 
@@ -30,9 +33,9 @@ const client = new Client({
 
 client.connect()
 
-require("./pages/registerF")(app, client)
+require("./pages/registerF")(app, bcrypt, client)
 
-require("./pages/login")(app, client)
+require("./pages/login")(app, client, bcrypt)
 
 require("./pages/write")(app, client)
 
@@ -40,9 +43,9 @@ require("./pages/home")(app)
 
 require("./pages/read")(app, client)
 
-require("./pages/loginF")(app)
+require("./pages/loginF")(app, client)
 
-require("./pages/register")(app)
+require("./pages/register")(app, bcrypt, client)
 
 require("./pages/logout")(app)
 
