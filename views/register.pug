@@ -1,5 +1,8 @@
 html
 	head
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+				integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+				  crossorigin="anonymous")
 		style.
 			body{
 			margin:0;
@@ -29,23 +32,50 @@ html
 			h1 Register Here!
 			form(method ="POST" action="registerF")
 
-				input(type= "text" id="email" name="regemail" placeholder="email")
+				input(type= "email" id="email" name="regemail" placeholder="email" required)
 
 				br
 
-				input(type= "text" id="nameform" name="regname" placeholder="Name")
+				input(type= "text" id="nameform" name="regname" placeholder="Name" required pattern="[a-zA-Z]+" )
 
 				br
 
-				input(type= "password" id="titleform" name="regpassword" placeholder="Password")
+				input(type= "password" id="titleform" name="regpassword" placeholder="Password" minlength="8" required)
 
 				br
 
+				input(type= "password" id="titleform2" name="regpassword2" placeholder="Typ password again" minlength="8" required)
+
+				br
 
 				button(id="click" type="submit" value="submit") Submit
+
+				p #{error}
+
+
+			script.
+
+				$(document).ready(function(event){
+					$("#click").click(function(){
+					let pass1 = $("#titleform").val()
+					let pass2 = $("#titleform2").val()
+					if(pass1 !== pass2 ){
+					event.preventDefault
+					alert("Passwords are not similar")
+
+					} else {
+
+					}
+
+					})
+
+				})
+
 
 		if user
 
 			H1 User Created!
 			.link 
 				a(href="/read" class="link") Click here to continue to messages.
+
+

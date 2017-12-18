@@ -28,11 +28,11 @@ html
 			h1 Login Here
 			form(method ="POST" action="login")
 
-				input(type= "text" id="nameform" name="logname" placeholder="Enter your username")
+				input(type= "text" id="nameform" name="logname" placeholder="Enter your username" required pattern="[a-zA-Z]+" )
 
 				br
 
-				input(type= "password" id="titleform" name="logpassword" placeholder="Password")
+				input(type= "password" id="titleform" name="logpassword" placeholder="Password" minlength="8" required)
 
 				br
 
