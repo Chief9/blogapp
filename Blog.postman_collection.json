@@ -1,0 +1,143 @@
+{
+	"info": {
+		"name": "Blog",
+		"_postman_id": "34614133-e84d-a93a-e250-d9d1a2701294",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+							"    console.log(response.json());",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "regemail",
+						"value": "Aap@gmail.com"
+					},
+					{
+						"key": "regname",
+						"value": "Postman"
+					},
+					{
+						"key": "regpassword",
+						"value": "12345678"
+					},
+					{
+						"key": "regpassword2",
+						"value": "12345678"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "regname",
+							"value": "Joost",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "regemail",
+							"value": "Joost@hoost.nl",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "regpassword",
+							"value": "12345678",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "regpassword2",
+							"value": "12345678",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://188.226.135.150/registerF",
+					"protocol": "http",
+					"host": [
+						"188",
+						"226",
+						"135",
+						"150"
+					],
+					"path": [
+						"registerF"
+					]
+				},
+				"description": "Register form"
+			},
+			"response": []
+		},
+		{
+			"name": "http://188.226.135.150/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "logname",
+							"value": "Joost",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "logpassword",
+							"value": "12345678",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://188.226.135.150/login",
+					"protocol": "http",
+					"host": [
+						"188",
+						"226",
+						"135",
+						"150"
+					],
+					"path": [
+						"login"
+					]
+				},
+				"description": "Login doc"
+			},
+			"response": []
+		}
+	]
+}
